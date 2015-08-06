@@ -12,7 +12,15 @@
 
 function Inphinity() {
     this.loading = false;
-    this.default = {
+    this.debug = false;
+    this.currentPage = 1;
+    this.itemSelector = 'div.post';
+    this.nextSelector = 'div.navigation a:first';
+    this.navSelector = 'div.navigation';
+    this.basePath = 'page2';
+    this.path = 'page';
+    this.dataType = 'html';
+    this.defaults = {
         loading: {
             finished: undefined,
             finishedMsg: "<em>Congratulations, you've reached the end of the internet.</em>",
@@ -36,19 +44,67 @@ Inphinity.prototype.getDocumentHeight = function() {
 };
 
 Inphinity.prototype.scroll = function(scrollTop) {
-    if (this.loading === true) return;
-    var docHeight = this.getDocumentHeight(),
-        diff = docHeight - scrollTop;
+    if (this.loading === true) 
+        return;
 
-    console.log(scrollTop)
-    console.log(diff)
-    if (diff <= 820)
+    var scrollActivate = (this.element.offsetTop + this.element.offsetHeight / 2),
+        diff = scrollActivate - scrollTop;
+
+    if (diff <= 750) {
         this.loading = true;
-    this.request();
+        this.request();
+    }
+};
+
+Inphinity.prototype.getPath = function() {
+    var path = this.basePath;
+    if (path.match(/^(.*?)\b2\b(.*?$)/)) {
+        path = path.match(/^(.*?)\b2\b(.*?$)/).slice(1);
+
+    // if there is any 2 in the url at all.
+    } else if (path.match(/^(.*?)2(.*?$)/)) {
+        if (path.match(/^(.*?page=)2(\/.*|$)/)) {
+            path = path.match(/^(.*?page=)2(\/.*|$)/).slice(1);
+            return path;
+        }
+        
+        path = path.match(/^(.*?)2(.*?$)/).slice(1);
+    } else {
+        // page= is used in drupal too but second page is page=1 not page=2:
+        if (path.match(/^(.*?page=)1(\/.*|$)/)) {
+            path = path.match(/^(.*?page=)1(\/.*|$)/).slice(1);
+            return path;
+        } else {
+            this._debug("Sorry, we couldn't parse your Next (Previous Posts) URL.");
+        }
+    }
+
+    return path;
+};
+
+Inphinity.prototype.getUrlPath = function() {
+    var nextSel = (document.querySelector(this.nextSelector).href).split('/');
+    return nextSel[nextSel.length - 1];
 };
 
 Inphinity.prototype.request = function() {
+    var self = this,
+        url = self.path + '' + (self.currentPage + 1),
+        xhr = new XMLHttpRequest();
 
+    xhr.open('GET', encodeURI(url));
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log('GOOD')
+            // console.log(xhr.responseText);
+            // add itens in #posts
+            // currentPage = if (nextPage exists) in html
+            // loading = false; 
+        } else {
+            self._debug('Request failed. Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
 };
 
 Inphinity.prototype.on = function(selector) {
@@ -57,19 +113,30 @@ Inphinity.prototype.on = function(selector) {
     return this;
 };
 
-Inphinity.prototype.set = function() {
+Inphinity.prototype.set = function(config) {
+    // TODO: extend to update this
+    if (config.navSelector) 
+        this.navSelector = config.navSelector;
+    if (config.nextSelector) 
+        this.nextSelector = config.nextSelector;
+    if (config.itemSelector) 
+        this.itemSelector = config.itemSelector;
+
+    this.basePath = this.getUrlPath();
+    this.path = this.getPath()[0];
+    this.setEventScroll();
+};
+
+Inphinity.prototype.setEventScroll = function() {
     var self = this;
-    console.log(self.element.scrollTop);
-    var el = self.element;
-    el.addEventListener("scroll", function(ev) {
-        console.log(ev)
-        // console.log(self.element.scrollTop);
-        self.scroll(self.element.scrollTop);
+    window.addEventListener("scroll", function(ev) {
+        self.scroll(ev.target.activeElement.scrollTop);
     });
 };
 
-// Initial Definition:
-// (window || document).addEventListener("scroll", function(ev) {
-//     inphinity.scroll(ev.target.activeElement.scrollTop);
-// });
+Inphinity.prototype._debug = function(message) {
+    // TODO: console working for IE8 too
+    console.log(message);
+};
+
 var inphinity = new Inphinity();

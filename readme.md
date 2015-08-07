@@ -4,6 +4,12 @@
 
 ## About
 
+Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
+
+### Who is using this?
+
+- [My personal blog](http://raphamorim.com/blog)
+
 ### How to use?
 
 Relax bro! A better documentation coming soon. For while, see a simple example:
@@ -21,50 +27,42 @@ inphinity.on('#posts').set({
 
 ### Options 
 
-####navSelector
+####• navSelector
 Description: Pagination nav 
 
 Default: `div.navigation`
 
-####nextSelector
+####• nextSelector
 Description: href attribute, who specifies the URL of the next page.
 
 Default: `div.navigation a:first`
 
-####itemSelector
+####• itemSelector
 Description: List items in structure 
 
 Default: `div.post`
 
-####finished
+####• finished
 Description: MsgMessage to show when finish pages when ends 
 
 Format: raw HTML
 
 Default: `<em>That's all folks!</em>`
 
-####loadingMsg
+####• loadingMsg
 Description: Message to show when load more items
 
 Format: raw HTML
 
 Default: `Loading more...`
 
-####animationSpeed 
+####• animationSpeed 
 Description: Set speed of the animations
 
 Suggestions: `normal`, `slow`, `fast` 
 
 Default: `500`
 
-
-### Where we use it?
-
-Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
-
-### Who uses?
-
-- [My personal blog](http://raphamorim.com/blog)
 
 ## Credits
 

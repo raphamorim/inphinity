@@ -27,7 +27,7 @@ function Inphinity() {
     this.defaults = {
         finishedMsg: "<em>That's all folks!</em>",
         loadingMsg: 'Loading more...',
-        speed: 'slow'
+        animationSpeed: 500
     };
 }
 
@@ -181,6 +181,20 @@ Inphinity.prototype.set = function(config) {
         this.nextSelector = config.nextSelector;
     if (config.itemSelector) 
         this.itemSelector = config.itemSelector;
+    if (config.loadingMsg)
+        this.defaults.loadingMsg = config.loadingMsg;
+    if (config.finishedMsg)
+        this.defaults.finishedMsg = config.finishedMsg;
+    if (config.animationSpeed) {
+        this.defaults.animationSpeed = config.animationSpeed;
+        
+        if (config.animationSpeed === "slow")
+            this.defaults.animationSpeed = 800;
+        if (config.animationSpeed === "normal")
+            this.defaults.animationSpeed = 500;
+        if (config.animationSpeed === "fast")
+            this.defaults.animationSpeed = 300;    
+    }
 
     this.init();
 };
@@ -206,12 +220,13 @@ Inphinity.prototype._debug = function(message) {
 };
 
 Inphinity.prototype.animation = function() {
+    var self = this;
     return {
         fadeOut: function(el, callback) {
             el.style.opacity = 1;
             var last = +new Date();
             var tick = function() {
-                el.style.opacity = +el.style.opacity - (new Date() - last) / 600;
+                el.style.opacity = +el.style.opacity - (new Date() - last) / self.defaults.animationSpeed;
                 last = +new Date();
 
                 if (+el.style.opacity > 0) {
@@ -228,7 +243,7 @@ Inphinity.prototype.animation = function() {
             el.style.opacity = 0;
             var last = +new Date();
             var tick = function() {
-                el.style.opacity = +el.style.opacity + (new Date() - last) / 500;
+                el.style.opacity = +el.style.opacity + (new Date() - last) / self.defaults.animationSpeed;
                 last = +new Date();
 
                 if (+el.style.opacity < 1) {

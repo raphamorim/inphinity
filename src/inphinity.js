@@ -104,6 +104,11 @@ Inphinity.prototype.createLoader = function() {
     this.loader = document.querySelector('.ph-loader');
 };
 
+Inphinity.prototype.updateLoader = function() {
+    this.element.removeChild(this.loader);
+    this.createLoader();
+};
+
 Inphinity.prototype.loaderToggle = function(status, fn) {
     this.loader.style.display = 'block';
 
@@ -143,7 +148,7 @@ Inphinity.prototype.render = function(bodyItems, skip) {
 
     if (self.currentPage === 1 && skip !== true) {
         var navSel = document.querySelector(self.navSelector);
-        self.animation().fadeOut(navSel, function() {
+        return self.animation().fadeOut(navSel, function() {
             return self.render(bodyItems, true);
         });
     }
@@ -156,6 +161,7 @@ Inphinity.prototype.render = function(bodyItems, skip) {
 }
 
 Inphinity.prototype.toNext = function() {
+    this.updateLoader();
     this.currentPage = this.currentPage + 1;
     this.loading = false;
 }

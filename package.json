@@ -1,0 +1,26 @@
+{
+  "name": "inphinity.js",
+  "version": "1.0.0",
+  "description": "A infinity scroll without jQuery or other dependency",
+  "main": "inphinity.js",
+  "scripts": {
+    "build": "gulp build",
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphamorim/inphinity.git"
+  },
+  "author": "Raphael Amorim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphamorim/inphinity/issues"
+  },
+  "homepage": "https://github.com/raphamorim/inphinity#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}

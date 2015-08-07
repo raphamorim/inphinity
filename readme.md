@@ -2,7 +2,7 @@
 
 > Infinity Scroll without [jQuery](https://jquery.com/) or other dependency.
 
-Infinitely inspired by [Infinity Scroll](https://github.com/infinite-scroll/infinite-scroll)
+## About
 
 ### How to use?
 
@@ -19,18 +19,43 @@ inphinity.on('#posts').set({
 });
 ```
 
-##### Options to Set
-`navSelector`    - Pagination nav (default: 'div.navigation')
+### Options 
 
-`nextSelector`   - href attribute, who specifies the URL of the next page.  (default: 'div.navigation a:first')
+####navSelector
+Description: Pagination nav 
 
-`itemSelector`   - List items in structure (default: 'div.post')
+Default: `div.navigation`
 
-`finishedMsg`    - Message to show when finish pages when ends (format: HTML, default: "<em>That's all folks!</em>")
+####nextSelector
+Description: href attribute, who specifies the URL of the next page.
 
-`loadingMsg`     - Message to show when load more items (format: HTML, default: 'Loading more...')
+Default: `div.navigation a:first`
 
-`animationSpeed` - Set speed of the animations (options: ["slow", "fast"], default: 500)
+####itemSelector
+Description: List items in structure 
+
+Default: `div.post`
+
+####finished
+Description: MsgMessage to show when finish pages when ends 
+
+Format: raw HTML
+
+Default: `<em>That's all folks!</em>`
+
+####loadingMsg
+Description: Message to show when load more items
+
+Format: raw HTML
+
+Default: `Loading more...`
+
+####animationSpeed 
+Description: Set speed of the animations
+
+Suggestions: `normal`, `slow`, `fast` 
+
+Default: `500`
 
 
 ### Where we use it?
@@ -40,6 +65,10 @@ Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
 ### Who uses?
 
 - [My personal blog](http://raphamorim.com/blog)
+
+## Credits
+
+Infinitely inspired by [Infinity Scroll](https://github.com/infinite-scroll/infinite-scroll)
 
 ## License
 

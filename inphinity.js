@@ -31,15 +31,6 @@ function Inphinity() {
     };
 }
 
-Inphinity.prototype.getDocumentHeight = function() {
-    var D = document;
-    return Math.max(
-        D.body.scrollHeight, D.documentElement.scrollHeight,
-        D.body.offsetHeight, D.documentElement.offsetHeight,
-        D.body.clientHeight, D.documentElement.clientHeight
-    );
-};
-
 Inphinity.prototype.scroll = function(scrollTop) {
     if (this.loading === true) 
         return;
@@ -180,7 +171,6 @@ Inphinity.prototype.on = function(selector) {
 };
 
 Inphinity.prototype.set = function(config) {
-    // TODO: extend to update this
     if (config.navSelector) 
         this.navSelector = config.navSelector;
     if (config.nextSelector) 
@@ -221,7 +211,6 @@ Inphinity.prototype.setEventScroll = function() {
 };
 
 Inphinity.prototype._debug = function(message) {
-    // TODO: console working for IE8 too
     console.log('Inphinity: ', message);
 };
 

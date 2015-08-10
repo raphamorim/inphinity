@@ -4,12 +4,12 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
  
 gulp.task('build', function() {
-  return gulp.src('src/*.js')
-    .pipe(concat('./inphinity.js'))
-    .pipe(gulp.dest('./'))
-    .pipe(rename('inphinity.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./'));
+    return gulp.src('src/**/*.js')
+        .pipe(concat('./inphinity.js'))
+        .pipe(gulp.dest('./'))
+        .pipe(rename('inphinity.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./'));
 });
 
 gulp.task('default', ['build'], function(){

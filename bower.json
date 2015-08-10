@@ -1,0 +1,23 @@
+{
+  "name": "inphinity.js",
+  "main": "inphinity.js",
+  "version": "0.9.1",
+  "homepage": "https://github.com/raphamorim/inphinity",
+  "authors": [
+    "Raphael H. Amorim <rapha850@gmail.com>"
+  ],
+  "description": "A infinity scroll without jQuery or other dependency",
+  "keywords": [
+    "infinity",
+    "scroll",
+    "native"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

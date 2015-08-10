@@ -59,8 +59,8 @@ Description: List items in structure
 
 Default: `div.post`
 
-####• finished
-Description: MsgMessage to show when finish pages when ends 
+####• finishedMsg
+Description: Message to show when finish pages when ends 
 
 Format: raw HTML
 

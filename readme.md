@@ -12,6 +12,23 @@ Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
 
 ### How to use?
 
+#### Getting
+
+First at all, get Inphinity using [Download Option](https://github.com/raphamorim/inphinity/archive/master.zip) or via bower. To get using [Bower](http://bower.io) just run this command
+
+```sh
+bower install inphinity
+```
+
+Add the source before body tag end:
+
+```html
+<script src="inphinity.min.js"></script>
+</body>
+```
+
+#### Usage
+
 Relax bro! A better documentation coming soon. For while, see a simple example:
 
 ```javascript

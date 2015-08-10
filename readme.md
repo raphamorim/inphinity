@@ -2,15 +2,13 @@
 
 > Infinity Scroll without [jQuery](https://jquery.com/) or other dependency.
 
-## About
-
 Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
 
-### Who is using this?
+##### Who is using this?
 
 - [My personal blog](http://raphamorim.com/blog)
 
-### How to use?
+## How to use?
 
 #### Getting
 

@@ -10,7 +10,14 @@
   "keywords": [
     "infinity",
     "scroll",
-    "native"
+    "native",
+    "without",
+    "jQuery",
+    "dependency",
+    "infinite",
+    "wordpress",
+    "jekyll",
+    "blog"
   ],
   "license": "MIT",
   "ignore": [

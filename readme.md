@@ -79,6 +79,10 @@ Suggestions: `normal`, `slow`, `fast`
 Default: `500`
 
 
+## Version
+
+Currently in v1.0.1 :)
+
 ## Credits
 
 Infinitely inspired by [Infinity Scroll](https://github.com/infinite-scroll/infinite-scroll)

@@ -1,6 +1,6 @@
 {
   "name": "inphinity.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A infinity scroll without jQuery or other dependency",
   "main": "inphinity.js",
   "scripts": {

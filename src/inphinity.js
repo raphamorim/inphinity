@@ -3,11 +3,11 @@
    Inphinity.js
    --------------------------------
    + https://github.com/raphamorim/inphinity
-   + version 0.9.0
+   + version 1.0.1
    + Copyright 2015 Raphael Amorim
    + Licensed under the MIT license
 
-   + Documentation: https://github.com/raphamorim/inphinity/
+   + Documentation: https://github.com/raphamorim/inphinity
 */
 
 var inphinity = (function() {
@@ -204,7 +204,7 @@ var inphinity = (function() {
     this.setEventScroll = function() {
         var self = this;
         window.addEventListener("scroll", function(ev) {
-            self.scroller(ev.target.activeElement.scrollTop);
+            self.scroller(window.scrollY || ev.target.activeElement.scrollTop);
         });
     };
 

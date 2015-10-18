@@ -67,7 +67,6 @@ var inphinity = (function() {
                 path = [this.path, ''];
             }
         }
-        console.log('aaa>>', path)
         return path;
     };
 
@@ -141,7 +140,7 @@ var inphinity = (function() {
         if (!nextPosts.length)
             return self.finished();
 
-        if (self.currentPage === 1 && skip !== true) {
+        if (skip !== true) {
             var navSel = document.querySelector(self.navSelector);
             return self.animation().fadeOut(navSel, function() {
                 return self.render(bodyItems, true);
@@ -204,7 +203,7 @@ var inphinity = (function() {
 
     this.init = function() {
         this.basePath = this.basePath || this.getUrlPath();
-        this.path = this.path || this.getPath()[0];
+        this.path = this.path || this.getPath()[0] || 'page';
         this.createLoader();
         this.createBag();
         this.setEventScroll();

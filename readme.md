@@ -81,7 +81,7 @@ Default: `500`
 
 ## Version
 
-Currently in **v1.0.3** :)
+Currently in **v1.0.4** :)
 
 ## Credits
 

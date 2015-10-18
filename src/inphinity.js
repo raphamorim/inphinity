@@ -3,7 +3,7 @@
    Inphinity.js
    --------------------------------
    + https://github.com/raphamorim/inphinity
-   + version 1.0.3
+   + version 1.0.4
    + Copyright 2015 Raphael Amorim
    + Licensed under the MIT license
 

@@ -3,7 +3,7 @@
    Inphinity.js
    --------------------------------
    + https://github.com/raphamorim/inphinity
-   + version 1.0.1
+   + version 1.0.3
    + Copyright 2015 Raphael Amorim
    + Licensed under the MIT license
 
@@ -13,12 +13,13 @@
 var inphinity = (function() {
     this.loading = false;
     this.debug = false;
+    this.url = '';
     this.currentPage = 1;
     this.itemSelector = 'div.post';
     this.nextSelector = 'div.navigation a:first';
     this.navSelector = 'div.navigation';
-    this.basePath = 'page2';
-    this.path = 'page';
+    this.basePath = false;
+    this.path = false;
     this.dataType = 'html';
     this.bag = false;
     this.bagClassName = false;
@@ -62,10 +63,11 @@ var inphinity = (function() {
                 path = path.match(/^(.*?page=)1(\/.*|$)/).slice(1);
                 return path;
             } else {
-                this._debug("Sorry, we couldn't parse your Next (Previous Posts) URL.");
+                this.currentPage = path.match(/\d+/)[0] - 1;
+                path = [this.path, ''];
             }
         }
-
+        console.log('aaa>>', path)
         return path;
     };
 
@@ -112,6 +114,9 @@ var inphinity = (function() {
         var self = this,
             url = self.path + '' + (self.currentPage + 1),
             xhr = new XMLHttpRequest();
+
+        if (window.location.pathname.indexOf(self.path) > -1)
+            url = '../' + url;
 
         self.loaderToggle(true);
 
@@ -176,6 +181,10 @@ var inphinity = (function() {
             this.nextSelector = config.nextSelector;
         if (config.itemSelector)
             this.itemSelector = config.itemSelector;
+        if (config.path)
+            this.path = config.path;
+        if (config.basePath)
+            this.basePath = config.basePath;
         if (config.loadingMsg)
             this.defaults.loadingMsg = config.loadingMsg;
         if (config.finishedMsg)
@@ -194,8 +203,8 @@ var inphinity = (function() {
     };
 
     this.init = function() {
-        this.basePath = this.getUrlPath();
-        this.path = this.getPath()[0];
+        this.basePath = this.basePath || this.getUrlPath();
+        this.path = this.path || this.getPath()[0];
         this.createLoader();
         this.createBag();
         this.setEventScroll();
@@ -251,7 +260,5 @@ var inphinity = (function() {
         }
     };
 
-    return {
-        on: this.on.bind(this)
-    }
+    return this.on.bind(this);
 })();

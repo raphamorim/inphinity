@@ -27,10 +27,10 @@ Add the source before body tag end:
 
 #### Usage
 
-Relax bro! A better documentation coming soon. For while, see a simple example:
+Relax! A better documentation coming soon (and you can help!). For while, see a simple example:
 
 ```javascript
-inphinity.on('#posts').set({
+inphinity('#posts').set({
   navSelector : "p.pagination",
   nextSelector  : "p.pagination a.older",
   itemSelector  : ".container ul#posts li.post",

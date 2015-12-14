@@ -3,7 +3,7 @@
    Inphinity.js
    --------------------------------
    + https://github.com/raphamorim/inphinity
-   + version 1.0.4
+   + version 1.0.5
    + Copyright 2015 Raphael Amorim
    + Licensed under the MIT license
 
@@ -23,7 +23,7 @@ var inphinity = (function() {
     this.dataType = 'html';
     this.bag = false;
     this.bagClassName = false;
-    this.loader = false;
+    this.loader = true;
     this.trustedRequest = false;
     this.defaults = {
         finishedMsg: "<em>That's all folks!</em>",
@@ -80,7 +80,7 @@ var inphinity = (function() {
         bag.style.display = 'none';
         this.bagClassName = this.bagClassName || 'ph-bag';
         bag.className = this.bagClassName;
-        this.element.appendChild(bag);
+        document.querySelector('body').appendChild(bag);
         this.bag = document.querySelector('.' + this.bagClassName);
     };
 
@@ -101,6 +101,11 @@ var inphinity = (function() {
     };
 
     this.loaderToggle = function(status, fn) {
+        if (!this.loader) {
+            if (typeof(fn) === 'function')
+                fn()
+            return;
+        }
         this.loader.style.display = 'block';
 
         if (status === true)
@@ -155,7 +160,7 @@ var inphinity = (function() {
     }
 
     this.toNext = function() {
-        this.updateLoader();
+        if (this.loader) this.updateLoader();
         this.currentPage = this.currentPage + 1;
         this.loading = false;
     }
@@ -184,6 +189,8 @@ var inphinity = (function() {
             this.path = config.path;
         if (config.basePath)
             this.basePath = config.basePath;
+        if (config.loader === false)
+            this.loader = config.loader;
         if (config.loadingMsg)
             this.defaults.loadingMsg = config.loadingMsg;
         if (config.finishedMsg)
@@ -204,9 +211,10 @@ var inphinity = (function() {
     this.init = function() {
         this.basePath = this.basePath || this.getUrlPath();
         this.path = this.path || this.getPath()[0] || 'page';
-        this.createLoader();
+        if (this.loader) this.createLoader();
         this.createBag();
         this.setEventScroll();
+
     };
 
     this.setEventScroll = function() {

@@ -71,6 +71,13 @@ Format: raw HTML
 
 Default: `Loading more...`
 
+####• loader 
+Description: Enable/Disable loader
+
+Suggestions: `true`, `false` 
+
+Default: `true`
+
 ####• animationSpeed 
 Description: Set speed of the animations
 

@@ -7,6 +7,7 @@ Inphinity was made to Jekyll static blogs, Drupal and Wordpress sites/blogs.
 ##### Who is using this?
 
 - [My personal blog](http://raphamorim.com/blog)
+- [Free Time](http://free-time.github.io/)
 
 ## How to use?
 

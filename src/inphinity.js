@@ -3,7 +3,7 @@
    Inphinity.js
    --------------------------------
    + https://github.com/raphamorim/inphinity
-   + version 1.0.5
+   + version 1.0.6
    + Copyright 2015 Raphael Amorim
    + Licensed under the MIT license
 
@@ -165,7 +165,7 @@ var inphinity = (function() {
         this.loading = false;
     }
 
-    this.finished = function(){ 
+    this.finished = function(){
         var finished = document.createElement('div');
         finished.className = 'ph-end';
         finished.innerHTML = this.defaults.finishedMsg;

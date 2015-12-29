@@ -41,10 +41,10 @@ inphinity('#posts').set({
 });
 ```
 
-### Options 
+### Options
 
 ####• navSelector
-Description: Pagination nav 
+Description: Pagination nav
 
 Default: `div.navigation`
 
@@ -54,12 +54,12 @@ Description: href attribute, who specifies the URL of the next page.
 Default: `div.navigation a:first`
 
 ####• itemSelector
-Description: List items in structure 
+Description: List items in structure
 
 Default: `div.post`
 
 ####• finishedMsg
-Description: Message to show when finish pages when ends 
+Description: Message to show when finish pages when ends
 
 Format: raw HTML
 
@@ -72,24 +72,24 @@ Format: raw HTML
 
 Default: `Loading more...`
 
-####• loader 
+####• loader
 Description: Enable/Disable loader
 
-Suggestions: `true`, `false` 
+Suggestions: `true`, `false`
 
 Default: `true`
 
-####• animationSpeed 
+####• animationSpeed
 Description: Set speed of the animations
 
-Suggestions: `normal`, `slow`, `fast` 
+Suggestions: `normal`, `slow`, `fast`
 
 Default: `500`
 
 
 ## Version
 
-Currently in **v1.0.4** :)
+Currently in **v1.0.6** :)
 
 ## Credits
 
